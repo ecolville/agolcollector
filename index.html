@@ -26,20 +26,26 @@
   
     <!--loading the modules-->
     <script>
-      require(["esri/Config", "esri/Map", "esri/views/MapView" ], (esriConfig, Map, MapView) => {
+      require([
+        "esri/Config", 
+        "esri/Map", 
+        "esri/views/MapView" ], 
+        (esriConfig, Map, MapView) => {
         
         //adding api key
         esriConfig.apiKey = "AAPKddba40c16f2c479188ee7654064642bcKj2RV3mAHrsiJS_6TRKUzkim46MXbNeE97z3bQn0zq3zyX67A3i8hBg6lEH0Fxl_"
 
         //create the map
         const map = new Map({
-          basemap: "satellite"
+          basemap: "satellite" //basemap layer 
         });
 
         //create a 2d view
         const view = new MapView({
           container: "viewDiv", // Reference to the DOM node that will contain the view
-          map: map // References the map object
+          map: map, // References the map object
+          center: [-80.1918, 25.7617], //long, lat of miami, fl
+          zoom: 12 // Sets zoom level based on level of detail (LOD)
         });
 
       });

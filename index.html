@@ -27,7 +27,7 @@
     <!--loading the modules-->
     <script>
       require([
-        "esri/Config", 
+        "esri/config", 
         "esri/Map", 
         "esri/views/MapView" ], 
         (esriConfig, Map, MapView) => {
@@ -43,7 +43,7 @@
         //create a 2d view
         const view = new MapView({
           container: "viewDiv", // Reference to the DOM node that will contain the view
-          map: map, // References the map object
+          map: map, // References the map object created above
           center: [-84.6189, 45.8492], //long, lat of Mackinac Island, MI
           zoom: 12 // Sets zoom level based on level of detail (LOD)
         });

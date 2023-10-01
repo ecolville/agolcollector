@@ -30,8 +30,9 @@
         "esri/config", 
         "esri/Map", 
         "esri/views/MapView",
-        "esri/widgets/Locate" ], 
-        (esriConfig, Map, MapView, Locate) => {
+        "esri/widgets/Locate",
+        "esri/layers/FeatureLayer"], 
+        (esriConfig, Map, MapView, Locate, FeatureLayer) => {
         
         //adding api key
         esriConfig.apiKey = "AAPKddba40c16f2c479188ee7654064642bcKj2RV3mAHrsiJS_6TRKUzkim46MXbNeE97z3bQn0zq3zyX67A3i8hBg6lEH0Fxl_"
@@ -45,8 +46,8 @@
         const view = new MapView({
           container: "viewDiv", // Reference to the DOM node that will contain the view
           map: map, // References the map object created above
-          center: [-84.6189, 45.8492], //long, lat of Mackinac Island, MI
-          zoom: 12 // Sets zoom level based on level of detail (LOD)
+          center: [-98.35, 39.50], //long, lat of Mackinac Island, MI
+          zoom: 4 // Sets zoom level based on level of detail (LOD)
         });
 
         const locateBtn = new Locate({
@@ -70,6 +71,14 @@
           index: 2
         });
 
+      // Create featurelayer from feature service 
+      const layer = new FeatureLayer({ 
+      // URL to the service 
+      url:"https://services1.arcgis.com/kkX9mRo34fTGAX96/arcgis/rest/services/survey123_af9a66de07ae4d6682f842ab4e63c943_results/FeatureServer"  
+      })
+      
+       // Add the layer to the map
+       map.add(layer);
 
       });
       </script>

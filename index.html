@@ -29,8 +29,9 @@
       require([
         "esri/config", 
         "esri/Map", 
-        "esri/views/MapView" ], 
-        (esriConfig, Map, MapView) => {
+        "esri/views/MapView",
+        "esri/widgets/Locate" ], 
+        (esriConfig, Map, MapView, Locate) => {
         
         //adding api key
         esriConfig.apiKey = "AAPKddba40c16f2c479188ee7654064642bcKj2RV3mAHrsiJS_6TRKUzkim46MXbNeE97z3bQn0zq3zyX67A3i8hBg6lEH0Fxl_"
@@ -47,6 +48,28 @@
           center: [-84.6189, 45.8492], //long, lat of Mackinac Island, MI
           zoom: 12 // Sets zoom level based on level of detail (LOD)
         });
+
+        const locateBtn = new Locate({
+          view: view
+        });
+
+        // Add the locate widget to the top left corner of the view
+        view.ui.add(locateBtn, {
+          position: "top-left"
+        });
+
+        const searchWidget = new Search({
+        view: view,
+        suggestionsEnabled: true, // Enable suggestions for the widget
+        maxSuggestions: 3 // number of suggestions to return
+      });
+
+      //add the search widget to the top left corner of the view
+        view.ui.add(searchWidget, {
+          position: "top-left",
+          index: 2
+        });
+
 
       });
       </script>
